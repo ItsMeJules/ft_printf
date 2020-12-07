@@ -5,35 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 16:31:09 by jules             #+#    #+#             */
-/*   Updated: 2020/12/04 21:38:26 by jules            ###   ########.fr       */
+/*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
+/*   Updated: 2020/12/07 21:26:40 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	handle_converters(t_helper *helper, char c)
+void	write_num(t_helper *helper, long num)
 {
-	if (c == 'c')
-		return (handle_c(helper));
-	else if (c == 's')
-		return (handle_s(helper));
-	else if (c == 'p')
-		return (handle_p(helper));
-	else if (c == 'd')
-		return (handle_d(helper));
-	else if (c == 'i')
-		return (handle_i(helper));
-	else if (c == 'u')
-		return (handle_u(helper));
-	else if (c == 'x')
-		return (handle_x(helper));
-	else if (c == 'X')
-		return (handle_big_x(helper));
-	else if (c == '%')
+	if (num > -10 && num < 10)
 	{
-		fill_print(helper, c);
-		return (1);
+		if (num < 0)
+		{
+			fill_print(helper, '-');
+			num = -num;
+		}
+		fill_print(helper, num + '0');
 	}
-	return (0);
+	else if (nb > 0)
+	{
+		write_num(num / 10);
+		write_num(num % 10);
+	}
+	else
+	{
+		fill_print(helper, '-');
+		write_num(-num);
+	}
+}
+
+int	handle_d(t_helper *helper, va_list *list)
+{
+	int	val;
+	int	digits;
+
+	val = va_arg(*list, int);
+	digits = count_digits(val);
+	helper->precision -= digits;
+	helper->pad_len -= digits;
+	write_padding(helper, 1);
+	write_num((long)val);
 }
