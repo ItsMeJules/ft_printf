@@ -6,36 +6,29 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/07 21:26:40 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/11 18:19:54 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	write_num(t_helper *helper, long num)
+void	write_num(t_helper *helper, int nb)
 {
-	if (num > -10 && num < 10)
-	{
-		if (num < 0)
-		{
-			fill_print(helper, '-');
-			num = -num;
-		}
-		fill_print(helper, num + '0');
-	}
-	else if (nb > 0)
-	{
-		write_num(num / 10);
-		write_num(num % 10);
-	}
-	else
+	unsigned int	nbr;
+
+	if (nb < 0)
 	{
 		fill_print(helper, '-');
-		write_num(-num);
+		nbr = (unsigned int)(nb * -1);
 	}
+	else
+		nbr = (unsigned int)nb;
+	if (nbr >= 10)
+		write_num(helper, nbr / 10);
+	fill_print(helper, (char)(nbr % 10 + '0'));
 }
 
-int	handle_d(t_helper *helper, va_list *list)
+void	handle_d(t_helper *helper, va_list *list)
 {
 	int	val;
 	int	digits;
@@ -45,5 +38,5 @@ int	handle_d(t_helper *helper, va_list *list)
 	helper->precision -= digits;
 	helper->pad_len -= digits;
 	write_padding(helper, 1);
-	write_num((long)val);
+	write_num(helper, val);
 }

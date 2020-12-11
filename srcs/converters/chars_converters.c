@@ -6,30 +6,35 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 20:41:23 by jules             #+#    #+#             */
-/*   Updated: 2020/12/07 21:33:32 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/11 18:41:26 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	handle_c(t_helper *helper, va_list *list)
+void	handle_c(t_helper *helper, va_list *list)
 {
 	char	c;
 
 	c = va_arg(*list, int);
 	helper->pad_len--;
 	write_padding(helper, 0);
+	fill_print(helper, c);
 }
 
-int	handle_s(t_helper *helper, va_list *list)
+void	handle_s(t_helper *helper, va_list *list)
 {
 	char	*s;
 	int		i;
+	int		len;
 
 	s = va_arg(*list, char*);
 	i = 0;
-	helper->pad_len -= ft_strlen(s);
+	len = ft_strlen(s);
+	if (helper->precision >= 0 && helper->precision < len)
+		len = helper->precision;
+	helper->pad_len -= len;
 	write_padding(helper, 0);
-	while (s[i])
+	while (len--)
 		fill_print(helper, s[i++]);
 }

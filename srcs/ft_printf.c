@@ -6,32 +6,33 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:26:14 by jules             #+#    #+#             */
-/*   Updated: 2020/12/07 21:41:01 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/11 18:53:35 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-void	handle_printf(t_helper *helper)
+void	handle_printf(t_helper *helper, va_list *list)
 {
 	while (helper->str[++helper->i])
 	{
 		if (helper->str[helper->i] != '%')
 			fill_print(helper, helper->str[helper->i]);
 		else if (helper->str[helper->i + 1])
-			handle_expression(helper);
+			handle_expression(helper, list);
 	}
 }
 
 int	ft_printf(const char *str, ...)
 {
 	t_helper	*helper;
-	va_list		*list;
+	va_list		list;
 
 	helper = new_helper(str);
 	va_start(list, str);
-	handle_printf(helper);
+	handle_printf(helper, &list);
 	va_end(list);
-	write(1, helper->str, printed += helper->pos + 1);
-	return (printed);
+	write(1, helper->print, helper->pos + 1);
+	return (helper->printed);
 }
