@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:55:27 by jules             #+#    #+#             */
-/*   Updated: 2020/12/14 21:40:28 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/15 15:04:41 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_helper	*new_helper(const char *str)
 
 void		fill_print(t_helper *helper, char c)
 {
-	if (helper->pos == PRINT_BUFF)	
+	if (helper->pos == PRINT_BUFF)
 	{
 		write(1, helper->str, PRINT_BUFF);
 		helper->pos = 0;
@@ -48,7 +48,7 @@ void		handle_expression(t_helper *helper, va_list *list)
 	{
 		if (ft_strchr(CONVERTERS, helper->str[helper->i]))
 		{
-			handle_converter(helper, list, helper->str[helper->i]);		
+			handle_converter(helper, list, helper->str[helper->i]);
 			break ;
 		}
 		handle_flags(helper, list, helper->str[helper->i]);

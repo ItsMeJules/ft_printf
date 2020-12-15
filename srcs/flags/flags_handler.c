@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 19:37:54 by jules             #+#    #+#             */
-/*   Updated: 2020/12/15 14:50:51 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/15 15:04:04 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	handle_zero_pad(t_helper *helper, va_list *list)
 void	handle_precision(t_helper *helper, va_list *list)
 {
 	helper->precision = 0;
-	helper->i++;	
+	helper->i++;
 	if (helper->str[helper->i] == '*')
 	{
 		helper->precision = va_arg(*list, int);

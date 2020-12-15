@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:26:14 by jules             #+#    #+#             */
-/*   Updated: 2020/12/14 19:39:58 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/15 15:03:24 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	handle_printf(t_helper *helper, va_list *list)
 	}
 }
 
-int	ft_printf(const char *str, ...)
+int		ft_printf(const char *str, ...)
 {
 	t_helper	*helper;
 	va_list		list;

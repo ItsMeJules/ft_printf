@@ -6,11 +6,11 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:49:43 by jules             #+#    #+#             */
-/*   Updated: 2020/12/05 22:50:16 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/15 15:16:43 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	count_digits(int nb)
+int	count_digits(long nb)
 {
 	int	digits;
 
