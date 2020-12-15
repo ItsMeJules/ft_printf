@@ -20,7 +20,8 @@ CONVS_SRCS_NAME	= $(addprefix $(CONVS_SRCS_PATH), chars_converters.c \
 				  	converters.c \
 					converters_utils.c \
 					decimal_converters.c)
-FLAGS_SRCS_NAME	= $(addprefix $(FLAGS_SRCS_PATH), flags_utils.c)
+FLAGS_SRCS_NAME	= $(addprefix $(FLAGS_SRCS_PATH), flags_utils.c \
+				  	flags_handler.c)
 SRCS_NAME		= $(addprefix $(SRCS_PATH), ft_printf.c \
 				  	helper_utils.c \
 					utils.c \

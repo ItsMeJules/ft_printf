@@ -10,6 +10,7 @@ STR_SRCS_PATH	= string
 MEM_SRCS_PATH	= memory
 CHAR_SRCS_PATH	= char
 FD_SRCS_PATH	= fd
+NUM_SRCS_PATH	= numbers
 BONUS_SRCS_PATH	= bonus
 SRCS_PATH		= srcs
 INCS_PATH		= includes
@@ -62,6 +63,7 @@ FD_SRCS_NAME	= $(addprefix $(FD_SRCS_PATH)/, ft_putchar_fd.c \
 					 ft_putstr_fd.c \
 					 ft_putendl_fd.c \
 					 ft_putnbr_fd.c)
+NUM_SRCS_NAME	= $(addprefix $(NUM_SRCS_PATH)/, ft_abs.c)
 BONUS_SRCS_NAME	= $(addprefix $(BONUS_SRCS_PATH)/, ft_lstnew.c \
 					ft_lstadd_front.c \
 					ft_lstsize.c \
@@ -77,7 +79,8 @@ INCS			= $(addprefix $(INCS_PATH)/, $(INCS_NAME))
 SRCS			= $(addprefix $(SRCS_PATH)/, $(STR_SRCS_NAME) \
 					$(MEM_SRCS_NAME) \
 					$(CHAR_SRCS_NAME) \
-					$(FD_SRCS_NAME))
+					$(FD_SRCS_NAME) \
+					$(NUM_SRCS_NAME))
 BONUS			= $(addprefix $(SRCS_PATH)/, $(BONUS_SRCS_NAME))
 
 OBJS			= $(SRCS:.c=.o)

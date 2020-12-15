@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/11 18:19:54 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/15 14:58:00 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,21 @@ void	handle_d(t_helper *helper, va_list *list)
 
 	val = va_arg(*list, int);
 	digits = count_digits(val);
+	if (helper->precision > 0)
+		helper->pad_len -= helper->precision;
+	else
+		helper->pad_len -= digits;
 	helper->precision -= digits;
-	helper->pad_len -= digits;
-	write_padding(helper, 1);
-	write_num(helper, val);
+	if (!helper->r_pad)
+	{
+		precision_print(helper);
+		write_num(helper, val);
+		pad_print(helper);
+	}
+	else
+	{
+		pad_print(helper);
+		precision_print(helper);
+		write_num(helper, val);
+	}
 }

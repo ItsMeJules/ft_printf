@@ -6,12 +6,11 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:26:14 by jules             #+#    #+#             */
-/*   Updated: 2020/12/11 18:53:35 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/14 19:39:58 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void	handle_printf(t_helper *helper, va_list *list)
 {

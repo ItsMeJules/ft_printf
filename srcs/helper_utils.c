@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:55:27 by jules             #+#    #+#             */
-/*   Updated: 2020/12/11 18:53:20 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/14 21:40:28 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_helper	*new_helper(const char *str)
 	helper->pad_char = ' ';
 	helper->printed = 0;
 	helper->i = -1;
-	helper->pad_len = 0;
+	helper->pad_len = -1;
 	helper->pos = 0;
-	helper->r_pad = 1;
+	helper->r_pad = 0;
 	helper->precision = -1;
 	return (helper);
 }
@@ -51,6 +51,6 @@ void		handle_expression(t_helper *helper, va_list *list)
 			handle_converter(helper, list, helper->str[helper->i]);		
 			break ;
 		}
-		handle_flags(helper);
+		handle_flags(helper, list, helper->str[helper->i]);
 	}
 }

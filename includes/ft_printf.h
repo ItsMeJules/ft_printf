@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:10:10 by jules             #+#    #+#             */
-/*   Updated: 2020/12/10 14:48:32 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/15 14:48:02 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ void		fill_print(t_helper *helper, char c);
 void		handle_expression(t_helper *helper, va_list *list);
 
 void		handle_converter(t_helper *helper, va_list *list, char c);
-void		handle_flags(t_helper *helper);
-void		write_padding(t_helper *helper, int precision);
+void		handle_flags(t_helper *helper, va_list *list, char c);
+
+void		pad_print(t_helper *helper);
+void		precision_print(t_helper *helper);
 
 int			count_digits(int val);
 
@@ -51,6 +53,10 @@ void		handle_p(t_helper *helper, va_list *list);
 void		handle_u(t_helper *helper, va_list *list);
 void		handle_x(t_helper *helper, va_list *list);
 void		handle_big_x(t_helper *helper, va_list *list);
+
+void		handle_pad(t_helper *helper, int rpad, va_list *list);
+void		handle_zero_pad(t_helper *helper, va_list *list); 
+void		handle_precision(t_helper *helper, va_list *list);
 
 int			ft_printf(const char *s, ...);
 
