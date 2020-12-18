@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   pointer_converter.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/05 22:49:43 by jules             #+#    #+#             */
-/*   Updated: 2020/12/18 16:18:00 by jules            ###   ########.fr       */
+/*   Created: 2020/12/18 16:00:50 by jules             #+#    #+#             */
+/*   Updated: 2020/12/18 16:23:52 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	count_digits(long nb)
+void	handle_p(t_helper *helper, va_list *list)
 {
-	int	digits;
+	unsigned long	val;
+	char			*hexa;
+	int				length;
 
-	digits = 0;
-	while (nb)
+	val = (unsigned long)va_arg(*list, void *);
+	hexa = to_base(val, "0123456789abcdef");
+	length = ft_strlen(hexa) + 2;
+	helper->pad_len -= length;
+	if (helper->r_pad)
 	{
-		nb /= 10;
-		digits++;
+		while (*hexa)	
+			fill_print(helper, *hexa++);
+		pad_print(helper);
+		return;
 	}
-	return (digits);
-}
-
-char	*to_base(long nbr, char *base)
-{
-	static char buffer[50];
-	char	*ptr;
-	int		base_len;
-
-	ptr = &buffer[49];
-	*ptr = 0;
-	base_len = ft_strlen(base);
-	while (nbr != 0)
-	{
-		*--ptr = base[nbr % base_len];
-		nbr /= base_len;
-	}
-	return (ptr);
+	pad_print(helper);
+	while (*hexa)	
+		fill_print(helper, *hexa++);
 }
