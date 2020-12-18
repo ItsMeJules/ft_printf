@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:31:09 by jules             #+#    #+#             */
-/*   Updated: 2020/12/18 18:41:00 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/18 18:47:34 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	handle_converter(t_helper *helper, va_list *list, char c)
 	else if (c == 'X')
 		handle_x(helper, list, 1);
 	else if (c == '%')
-		handle_percent(helper, list);
+		handle_percent(helper);
 }
