@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 16:00:50 by jules             #+#    #+#             */
-/*   Updated: 2020/12/18 18:12:54 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/18 18:44:04 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,18 @@ void	handle_p(t_helper *helper, va_list *list)
 	fill_print(helper, 'x');
 	while (*hexa)
 		fill_print(helper, *hexa++);
+}
+
+void	handle_percent(t_helper *helper)
+{
+	helper->pad_len--;
+	if (!helper->r_pad)
+	{
+		fill_print(helper, '%');
+		pad_print(helper);
+		return ;
+	}
+	else
+		pad_print(helper);
+	fill_print(helper, '%');
 }

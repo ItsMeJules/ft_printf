@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:10:10 by jules             #+#    #+#             */
-/*   Updated: 2020/12/18 17:59:13 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/18 18:43:58 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft/includes/libft.h"
 
 # define PRINT_BUFF 100
-# define CONVERTERS "cspdiuxX"
+# define CONVERTERS "%cspdiuxX"
 
 typedef struct	s_helper
 {
@@ -46,13 +46,14 @@ int				count_digits(long val);
 char			*to_base(int nbr, char *base);
 
 void			handle_d(t_helper *helper, va_list *list);
+void			handle_u(t_helper *helper, va_list *list);
+void			handle_x(t_helper *helper, va_list *list, int maj);
 
 void			handle_c(t_helper *helper, va_list *list);
 void			handle_s(t_helper *helper, va_list *list);
 
 void			handle_p(t_helper *helper, va_list *list);
-void			handle_u(t_helper *helper, va_list *list);
-void			handle_x(t_helper *helper, va_list *list, int maj);
+void			handle_percent(t_helper *helper);
 
 void			handle_pad(t_helper *helper, int rpad, va_list *list);
 void			handle_zero_pad(t_helper *helper, va_list *list);
