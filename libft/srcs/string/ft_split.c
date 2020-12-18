@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/18 17:27:06 by jules             #+#    #+#             */
+/*   Updated: 2020/12/18 17:34:17 by jules            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	is_sep(char c, char sep)
@@ -17,7 +29,7 @@ static int	count_words(char const *s, char sep)
 	while (s[++i])
 	{
 		if (!is_sep(s[i], sep) && is_sep(s[i - 1], sep))
-				count++;
+			count++;
 	}
 	return (count + 1);
 }

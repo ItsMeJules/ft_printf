@@ -1,7 +1,12 @@
+#include <stdio.h>
 #include "includes/ft_printf.h"
 
 int	main()
 {
-	int	res = ft_printf("%sfine and you ? %c\n", "hi how are you", 'u');
-	ft_printf("%.4u", 1350); 
+	int	i = 5;
+	int	*d = &i;
+	int	j = 1234;
+
+	ft_printf("%30p %.5x %-10X\n", d, j, j); 
+	printf("%30p %.5x %-10X\n", d, j, j);
 }

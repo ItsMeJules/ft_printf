@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/15 15:20:21 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/18 18:07:27 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,35 @@ void	handle_u(t_helper *helper, va_list *list)
 		pad_print(helper);
 		precision_print(helper);
 		write_num(helper, (long)val);
+	}
+}
+
+void	handle_x(t_helper *helper, va_list *list, int maj)
+{
+	int		val;
+	char	*hexa;
+	int		length;
+
+	val	= va_arg(*list, int);
+	hexa = to_base(val, maj ? "0123456789ABCDEF" : "0123456789abcdef");
+	length = ft_strlen(hexa);
+	if (helper->precision > 0)
+		helper->pad_len -= helper->precision;
+	else
+		helper->pad_len -= length;
+	helper->precision -= length;
+	if (!helper->r_pad)
+	{
+		precision_print(helper);
+		while (*hexa)
+			fill_print(helper, *hexa++);
+		pad_print(helper);
+	}
+	else
+	{
+		pad_print(helper);
+		precision_print(helper);
+		while (*hexa)
+			fill_print(helper, *hexa++);
 	}
 }

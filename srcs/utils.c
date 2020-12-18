@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:49:43 by jules             #+#    #+#             */
-/*   Updated: 2020/12/18 16:18:00 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/18 17:59:26 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	count_digits(long nb)
 	return (digits);
 }
 
-char	*to_base(long nbr, char *base)
+char	*to_base(int nbr, char *base)
 {
 	static char buffer[50];
-	char	*ptr;
-	int		base_len;
+	char		*ptr;
+	int			base_len;
 
 	ptr = &buffer[49];
 	*ptr = 0;
