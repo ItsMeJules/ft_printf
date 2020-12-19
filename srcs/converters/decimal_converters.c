@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 18:31:58 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 23:22:37 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	write_num(t_helper *helper, long nbr)
 {
-	if (nbr == 0 && helper->precision != -1)
+	if (nbr == 0 && helper->precision == 0)
 		return ;
 	if (nbr < 0)
 	{
