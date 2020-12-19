@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 18:29:08 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 18:31:58 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ void	write_hex(t_helper *helper, char *hexa, int val)
 
 void	handle_x(t_helper *helper, va_list *list, int maj)
 {
-	int		val;
-	char	*hexa;
-	int		length;
+	unsigned int	val;
+	char			*hexa;
+	int				length;
 
 	val = va_arg(*list, unsigned int);
 	hexa = to_base(val, (maj ? "0123456789ABCDEF" : "0123456789abcdef"));
