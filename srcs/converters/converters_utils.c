@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:23:10 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 17:00:59 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 17:14:43 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	prec_pad_checks(t_helper *helper, int val, int digits)
 			helper->pad_len -= digits + 1;
 		else if (val > 0)
 			helper->pad_len -= digits;
+		else
+			helper->pad_len--;
 	}
 	helper->precision -= digits;
 }
