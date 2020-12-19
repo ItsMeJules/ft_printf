@@ -6,30 +6,11 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 16:00:50 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 16:00:17 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 18:30:24 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*to_unsigned_base(unsigned long nbr, char *base)
-{
-	static char buffer[50];
-	char		*ptr;
-	int			base_len;
-
-	ptr = &buffer[49];
-	*ptr = 0;
-	if (nbr == 0)
-		*--ptr = 0;
-	base_len = ft_strlen(base);
-	while (nbr != 0)
-	{
-		*--ptr = base[nbr % base_len];
-		nbr /= base_len;
-	}
-	return (ptr);
-}
 
 void	fill_chars(t_helper *helper, char *hexa, int val)
 {
@@ -48,7 +29,7 @@ void	handle_p(t_helper *helper, va_list *list)
 	int				length;
 
 	val = (unsigned long)va_arg(*list, void *);
-	hexa = to_unsigned_base(val, "0123456789abcdef");
+	hexa = to_base(val, "0123456789abcdef");
 	length = ft_strlen(hexa) + 2;
 	helper->pad_len -= length;
 	if (val == 0)

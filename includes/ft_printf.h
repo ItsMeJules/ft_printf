@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:10:10 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 01:37:38 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 18:30:10 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void			precision_print(t_helper *helper);
 void			prec_pad_checks(t_helper *helper, int val, int digits);
 
 int				count_digits(long val);
-char			*to_base(int nbr, char *base);
+char			*to_base(unsigned long nbr, char *base);
 
 void			handle_d(t_helper *helper, va_list *list);
 void			handle_u(t_helper *helper, va_list *list);

@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 18:20:43 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 18:29:08 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	handle_x(t_helper *helper, va_list *list, int maj)
 	char	*hexa;
 	int		length;
 
-	val = va_arg(*list, int);
+	val = va_arg(*list, unsigned int);
 	hexa = to_base(val, (maj ? "0123456789ABCDEF" : "0123456789abcdef"));
 	length = ft_strlen(hexa);
 	prec_pad_checks(helper, val, length);
