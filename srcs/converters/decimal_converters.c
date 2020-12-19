@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 17:52:25 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 18:20:43 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,18 @@ void	handle_u(t_helper *helper, va_list *list)
 	}
 }
 
+void	write_hex(t_helper *helper, char *hexa, int val)
+{
+	if (val == 0)
+	{
+		if (helper->precision != -1)
+			return ;
+		fill_print(helper, '0');
+	}
+	while (*hexa)
+		fill_print(helper, *hexa++);
+}
+
 void	handle_x(t_helper *helper, va_list *list, int maj)
 {
 	int		val;
@@ -92,19 +104,13 @@ void	handle_x(t_helper *helper, va_list *list, int maj)
 	if (!helper->r_pad)
 	{
 		precision_print(helper);
-		if (val == 0)
-			fill_print(helper, '0');
-		while (*hexa)
-			fill_print(helper, *hexa++);
+		write_hex(helper, hexa, val);
 		pad_print(helper);
 	}
 	else
 	{
 		pad_print(helper);
 		precision_print(helper);
-		if (val == 0)
-			fill_print(helper, '0');
-		while (*hexa)
-			fill_print(helper, *hexa++);
+		write_hex(helper, hexa, val);
 	}
 }
