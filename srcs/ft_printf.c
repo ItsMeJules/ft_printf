@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:26:14 by jules             #+#    #+#             */
-/*   Updated: 2020/12/18 18:34:36 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 01:00:16 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ void	handle_printf(t_helper *helper, va_list *list)
 {
 	while (helper->str[++helper->i])
 	{
+		write(1, "iter=", 5);
+		ft_putnbr_fd(helper->i, 1);
+		write(1, " | ", 3);
 		if (helper->str[helper->i] != '%')
 			fill_print(helper, helper->str[helper->i]);
 		else if (helper->str[helper->i + 1])

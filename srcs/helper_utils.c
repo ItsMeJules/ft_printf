@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:55:27 by jules             #+#    #+#             */
-/*   Updated: 2020/12/18 18:39:41 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 01:06:04 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		fill_print(t_helper *helper, char c)
 {
 	if (helper->pos == PRINT_BUFF)
 	{
-		write(1, helper->str, PRINT_BUFF);
+		write(1, helper->print, PRINT_BUFF);
 		helper->pos = 0;
 	}
 	helper->print[helper->pos++] = c;
