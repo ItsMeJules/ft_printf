@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:26:14 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 22:25:40 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 23:06:42 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_printf(const char *str, ...)
 	va_start(list, str);
 	handle_printf(helper, &list);
 	va_end(list);
+	//ft_putnbr_fd(helper->pos, 1);
 	write(1, helper->print, helper->pos);
 	printed = helper->printed;
 	free(helper->print);
