@@ -6,22 +6,22 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 01:43:23 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 01:47:28 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	write_num(t_helper *helper, long nbr, int neg)
+void	write_num(t_helper *helper, long nbr)
 {
-	if (neg)
+	if (nbr < 0)
 	{
 		fill_print(helper, '-');
 		precision_print(helper);
 		nbr *= -1;
 	}
 	if (nbr >= 10)
-		write_num(helper, nbr / 10, neg);
+		write_num(helper, nbr / 10);
 	fill_print(helper, (char)(nbr % 10 + '0'));
 }
 
@@ -37,7 +37,7 @@ void	handle_d(t_helper *helper, va_list *list)
 	{
 		if (val >= 0)
 			precision_print(helper);
-		write_num(helper, (long)val, val < 0);
+		write_num(helper, (long)val);
 		pad_print(helper);
 	}
 	else
@@ -45,7 +45,7 @@ void	handle_d(t_helper *helper, va_list *list)
 		pad_print(helper);
 		if (val >= 0)
 			precision_print(helper);
-		write_num(helper, (long)val, val < 0);
+		write_num(helper, (long)val);
 	}
 }
 
@@ -60,14 +60,14 @@ void	handle_u(t_helper *helper, va_list *list)
 	if (!helper->r_pad)
 	{
 		precision_print(helper);
-		write_num(helper, (long)val, val < 0);
+		write_num(helper, (long)val);
 		pad_print(helper);
 	}
 	else
 	{
 		pad_print(helper);
 		precision_print(helper);
-		write_num(helper, (long)val, val < 0);
+		write_num(helper, (long)val);
 	}
 }
 
