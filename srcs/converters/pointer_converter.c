@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 16:00:50 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 01:42:23 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 16:00:17 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	fill_chars(t_helper *helper, char *hexa, int val)
 {
 	fill_print(helper, '0');
 	fill_print(helper, 'x');
-	if (val <= 0)
+	if (val == 0)
 		fill_print(helper, '0');
 	while (*hexa)
 		fill_print(helper, *hexa++);
@@ -51,6 +51,8 @@ void	handle_p(t_helper *helper, va_list *list)
 	hexa = to_unsigned_base(val, "0123456789abcdef");
 	length = ft_strlen(hexa) + 2;
 	helper->pad_len -= length;
+	if (val == 0)
+		helper->pad_len--;
 	if (!helper->r_pad)
 	{
 		fill_chars(helper, hexa, val);

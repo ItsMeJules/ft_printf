@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:23:10 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 01:55:10 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 16:23:49 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,13 @@ void	precision_print(t_helper *helper)
 void	prec_pad_checks(t_helper *helper, int val, int digits)
 {
 	if (helper->precision > 0)
-		helper->pad_len -= helper->precision + 1;
+		helper->pad_len -= helper->precision + (val < 0 ? 2 : 1);
 	else
-		helper->pad_len -= val < 0 ? digits + 1 : digits;
+	{
+		if (val < 0)
+			helper->pad_len -= digits + 1;
+		else if (val > 0)
+			helper->pad_len -= digits;
+	}
 	helper->precision -= digits;
 }

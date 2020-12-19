@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 20:41:23 by jules             #+#    #+#             */
-/*   Updated: 2020/12/15 14:41:08 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 16:36:14 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	handle_s(t_helper *helper, va_list *list)
 
 	s = va_arg(*list, char*);
 	i = 0;
+	if (s == NULL)
+		s = ft_strdup("(null)");
 	len = ft_strlen(s);
 	if (helper->precision >= 0 && helper->precision < len)
 		len = helper->precision;
