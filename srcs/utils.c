@@ -6,13 +6,13 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:49:43 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 18:30:13 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 20:16:01 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	count_digits(long nb)
+int		count_digits(long nb)
 {
 	int	digits;
 
@@ -24,6 +24,7 @@ int	count_digits(long nb)
 	}
 	return (digits);
 }
+
 char	*to_base(unsigned long nbr, char *base)
 {
 	static char buffer[50];
