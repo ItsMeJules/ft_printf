@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 16:00:50 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 22:05:04 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 23:10:00 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	handle_p(t_helper *helper, va_list *list)
 	hexa = to_base(val, "0123456789abcdef");
 	length = ft_strlen(hexa) + 2;
 	helper->pad_len -= length;
-	if (val == 0 && helper->precision != -1)
+	if (val == 0 && helper->precision == -1)
 		helper->pad_len--;
 	if (!helper->r_pad)
 	{
