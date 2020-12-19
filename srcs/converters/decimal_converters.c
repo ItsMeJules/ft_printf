@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/20 00:35:33 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/20 00:38:38 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	handle_u(t_helper *helper, va_list *list)
 	val = va_arg(*list, unsigned int);
 	digits = count_digits(val);
 	prec_pad_checks(helper, val, digits);
+	if ((int)val < 0)
+		helper->pad_len++;
 	if (!helper->r_pad)
 	{
 		precision_print(helper);
