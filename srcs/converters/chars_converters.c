@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 20:41:23 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 16:36:14 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 20:10:55 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,41 @@ void	handle_c(t_helper *helper, va_list *list)
 	fill_print(helper, c);
 }
 
+void	write_string(t_helper *helper, char *s, int len, int alloc)
+{
+	int	i;
+
+	i = 0;
+	while (len--)
+		fill_print(helper, s[i++]);
+	if (alloc)
+		free(s);
+}
+
 void	handle_s(t_helper *helper, va_list *list)
 {
 	char	*s;
-	int		i;
 	int		len;
+	int		alloc;
 
 	s = va_arg(*list, char*);
-	i = 0;
+	alloc = 0;
 	if (s == NULL)
+	{
 		s = ft_strdup("(null)");
+		alloc = 1;
+	}
 	len = ft_strlen(s);
 	if (helper->precision >= 0 && helper->precision < len)
 		len = helper->precision;
 	helper->pad_len -= len;
 	if (!helper->r_pad)
 	{
-		while (len--)
-			fill_print(helper, s[i++]);
+		write_string(helper, s, len, alloc);
 		pad_print(helper);
 		return ;
 	}
 	else
 		pad_print(helper);
-	while (len--)
-		fill_print(helper, s[i++]);
+	write_string(helper, s, len, alloc);
 }
