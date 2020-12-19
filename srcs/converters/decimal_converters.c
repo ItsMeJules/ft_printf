@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 01:47:28 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 01:56:04 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	write_num(t_helper *helper, long nbr)
 {
 	if (nbr < 0)
 	{
+		if (helper->r_pad)
+			pad_print(helper);
 		fill_print(helper, '-');
 		precision_print(helper);
 		nbr *= -1;
@@ -42,9 +44,11 @@ void	handle_d(t_helper *helper, va_list *list)
 	}
 	else
 	{
-		pad_print(helper);
 		if (val >= 0)
+		{
+			pad_print(helper);
 			precision_print(helper);
+		}
 		write_num(helper, (long)val);
 	}
 }
