@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 19:37:54 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 23:04:49 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/20 00:11:33 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	handle_precision(t_helper *helper, va_list *list)
 	if (helper->str[helper->i] == '*')
 	{
 		helper->precision = va_arg(*list, int);
-		if (helper->precision > 0 && helper->pad_char == '0')
+		if (helper->precision >= 0 && helper->pad_char == '0')
 			helper->pad_char = ' ';
 		return ;
 	}
@@ -61,7 +61,7 @@ void	handle_precision(t_helper *helper, va_list *list)
 			+ helper->str[helper->i] - '0';
 		helper->i++;
 	}
-	if (helper->precision > 0 && helper->pad_char == '0')
+	if (helper->precision >= 0 && helper->pad_char == '0')
 		helper->pad_char = ' ';
 	helper->i--;
 }

@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 23:22:37 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/20 00:35:33 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void	handle_x(t_helper *helper, va_list *list, int maj)
 	hexa = to_base(val, (maj ? "0123456789ABCDEF" : "0123456789abcdef"));
 	length = ft_strlen(hexa);
 	prec_pad_checks(helper, val, length);
+	if ((int)val < 0)
+		helper->pad_len++;
 	if (!helper->r_pad)
 	{
 		precision_print(helper);
