@@ -6,21 +6,22 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 01:21:12 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 01:43:23 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	write_num(t_helper *helper, long nbr)
+void	write_num(t_helper *helper, long nbr, int neg)
 {
-	if (nbr < 0)
+	if (neg)
 	{
 		fill_print(helper, '-');
+		precision_print(helper);
 		nbr *= -1;
 	}
 	if (nbr >= 10)
-		write_num(helper, nbr / 10);
+		write_num(helper, nbr / 10, neg);
 	fill_print(helper, (char)(nbr % 10 + '0'));
 }
 
@@ -31,22 +32,20 @@ void	handle_d(t_helper *helper, va_list *list)
 
 	val = va_arg(*list, int);
 	digits = count_digits(val);
-	if (helper->precision > 0)
-		helper->pad_len -= helper->precision;
-	else
-		helper->pad_len -= val < 0 ? digits + 1 : digits;
-	helper->precision -= digits;
+	prec_pad_checks(helper, val, digits);
 	if (!helper->r_pad)
 	{
-		precision_print(helper);
-		write_num(helper, (long)val);
+		if (val >= 0)
+			precision_print(helper);
+		write_num(helper, (long)val, val < 0);
 		pad_print(helper);
 	}
 	else
 	{
 		pad_print(helper);
-		precision_print(helper);
-		write_num(helper, (long)val);
+		if (val >= 0)
+			precision_print(helper);
+		write_num(helper, (long)val, val < 0);
 	}
 }
 
@@ -57,22 +56,18 @@ void	handle_u(t_helper *helper, va_list *list)
 
 	val = va_arg(*list, unsigned int);
 	digits = count_digits(val);
-	if (helper->precision > 0)
-		helper->pad_len -= helper->precision;
-	else
-		helper->pad_len -= val < 0 ? digits + 1 : digits;
-	helper->precision -= digits;
+	prec_pad_checks(helper, val, digits);
 	if (!helper->r_pad)
 	{
 		precision_print(helper);
-		write_num(helper, (long)val);
+		write_num(helper, (long)val, val < 0);
 		pad_print(helper);
 	}
 	else
 	{
 		pad_print(helper);
 		precision_print(helper);
-		write_num(helper, (long)val);
+		write_num(helper, (long)val, val < 0);
 	}
 }
 
@@ -82,14 +77,10 @@ void	handle_x(t_helper *helper, va_list *list, int maj)
 	char	*hexa;
 	int		length;
 
-	val	= va_arg(*list, int);
-	hexa = to_base(val, maj ? "0123456789ABCDEF" : "0123456789abcdef");
+	val = va_arg(*list, int);
+	hexa = to_base(val, (maj ? "0123456789ABCDEF" : "0123456789abcdef"));
 	length = ft_strlen(hexa);
-	if (helper->precision > 0)
-		helper->pad_len -= helper->precision;
-	else
-		helper->pad_len -= val < 0 ? length + 1 : length;
-	helper->precision -= length;
+	prec_pad_checks(helper, val, length);
 	if (!helper->r_pad)
 	{
 		precision_print(helper);

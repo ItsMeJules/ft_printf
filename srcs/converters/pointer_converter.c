@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 16:00:50 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 01:28:19 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 01:42:23 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ char	*to_unsigned_base(unsigned long nbr, char *base)
 	return (ptr);
 }
 
+void	fill_chars(t_helper *helper, char *hexa, int val)
+{
+	fill_print(helper, '0');
+	fill_print(helper, 'x');
+	if (val <= 0)
+		fill_print(helper, '0');
+	while (*hexa)
+		fill_print(helper, *hexa++);
+}
+
 void	handle_p(t_helper *helper, va_list *list)
 {
 	unsigned long	val;
@@ -43,22 +53,12 @@ void	handle_p(t_helper *helper, va_list *list)
 	helper->pad_len -= length;
 	if (!helper->r_pad)
 	{
-		fill_print(helper, '0');
-		fill_print(helper, 'x');
-		if (val <= 0)
-			fill_print(helper, '0');
-		while (*hexa)
-			fill_print(helper, *hexa++);
+		fill_chars(helper, hexa, val);
 		pad_print(helper);
 		return ;
 	}
 	pad_print(helper);
-	fill_print(helper, '0');
-	fill_print(helper, 'x');
-	if (val <= 0)
-		fill_print(helper, '0');
-	while (*hexa)
-		fill_print(helper, *hexa++);
+	fill_chars(helper, hexa, val);
 }
 
 void	handle_percent(t_helper *helper)
