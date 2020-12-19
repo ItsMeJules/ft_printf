@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 16:29:25 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 17:10:19 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	write_num(t_helper *helper, long nbr)
 {
+	if (nbr == 0)
+		return ;
 	if (nbr < 0)
 	{
 		if (helper->r_pad)
