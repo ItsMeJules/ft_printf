@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 16:00:50 by jules             #+#    #+#             */
-/*   Updated: 2020/12/18 18:44:04 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 01:27:11 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*to_unsigned_base(unsigned long nbr, char *base)
 
 	ptr = &buffer[49];
 	*ptr = 0;
+	if (nbr == 0)
+		*--ptr = 0;
 	base_len = ft_strlen(base);
 	while (nbr != 0)
 	{
@@ -43,6 +45,8 @@ void	handle_p(t_helper *helper, va_list *list)
 	{
 		fill_print(helper, '0');
 		fill_print(helper, 'x');
+		if (val <= 0)
+			fill_print(helper '0');
 		while (*hexa)
 			fill_print(helper, *hexa++);
 		pad_print(helper);
@@ -51,6 +55,8 @@ void	handle_p(t_helper *helper, va_list *list)
 	pad_print(helper);
 	fill_print(helper, '0');
 	fill_print(helper, 'x');
+	if (val <= 0)
+		fill_print(helper '0');
 	while (*hexa)
 		fill_print(helper, *hexa++);
 }

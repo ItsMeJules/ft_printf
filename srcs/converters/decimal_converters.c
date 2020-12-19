@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/18 18:07:27 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 01:21:12 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	handle_d(t_helper *helper, va_list *list)
 	if (helper->precision > 0)
 		helper->pad_len -= helper->precision;
 	else
-		helper->pad_len -= digits;
+		helper->pad_len -= val < 0 ? digits + 1 : digits;
 	helper->precision -= digits;
 	if (!helper->r_pad)
 	{
@@ -60,7 +60,7 @@ void	handle_u(t_helper *helper, va_list *list)
 	if (helper->precision > 0)
 		helper->pad_len -= helper->precision;
 	else
-		helper->pad_len -= digits;
+		helper->pad_len -= val < 0 ? digits + 1 : digits;
 	helper->precision -= digits;
 	if (!helper->r_pad)
 	{
@@ -88,7 +88,7 @@ void	handle_x(t_helper *helper, va_list *list, int maj)
 	if (helper->precision > 0)
 		helper->pad_len -= helper->precision;
 	else
-		helper->pad_len -= length;
+		helper->pad_len -= val < 0 ? length + 1 : length;
 	helper->precision -= length;
 	if (!helper->r_pad)
 	{
