@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 19:37:54 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 19:07:15 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 19:13:24 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@ void	handle_pad(t_helper *helper, int rpad, va_list *list)
 		helper->i++;
 	if (helper->str[helper->i] == '*')
 	{
-		helper->pad_len = ft_abs(va_arg(*list, int));
+		helper->pad_len = va_arg(*list, int);
+		if (helper->pad_len < 0 && helper->pad_char == '0')
+		{
+			helper->pad_char = ' ';
+			helper->r_pad = 0;
+		}
+		helper->pad_len = ft_abs(helper->pad_len);
 		return ;
 	}
 	while (ft_isdigit(helper->str[helper->i]))
