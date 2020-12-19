@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 16:00:50 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 18:30:24 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 22:02:28 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	fill_chars(t_helper *helper, char *hexa, int val)
 	fill_print(helper, '0');
 	fill_print(helper, 'x');
 	if (val == 0)
-		fill_print(helper, '0');
+	{
+		if (helper->precision == -1)
+			fill_print(helper, '0');
+	}
 	while (*hexa)
 		fill_print(helper, *hexa++);
 }

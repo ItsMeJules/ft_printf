@@ -6,11 +6,31 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:23:10 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 19:07:37 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/19 21:40:00 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	handle_converter(t_helper *helper, va_list *list, char c)
+{
+	if (c == 'c')
+		handle_c(helper, list);
+	else if (c == 's')
+		handle_s(helper, list);
+	else if (c == 'p')
+		handle_p(helper, list);
+	else if (c == 'd' || c == 'i')
+		handle_d(helper, list);
+	else if (c == 'u')
+		handle_u(helper, list);
+	else if (c == 'x')
+		handle_x(helper, list, 0);
+	else if (c == 'X')
+		handle_x(helper, list, 1);
+	else if (c == '%')
+		handle_percent(helper);
+}
 
 void	pad_print(t_helper *helper)
 {
