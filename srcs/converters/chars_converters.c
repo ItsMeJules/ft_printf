@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 20:41:23 by jules             #+#    #+#             */
-/*   Updated: 2020/12/20 11:15:24 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/20 11:18:17 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	handle_s(t_helper *helper, va_list *list)
 	if (helper->precision >= 0 && helper->precision < len)
 		len = helper->precision;
 	helper->pad_len -= len;
-	helper->precision = -1; /* resets the precision for errors handling */
+	helper->precision = -1;
 	if (!helper->r_pad)
 	{
 		write_string(helper, s, len, alloc);
