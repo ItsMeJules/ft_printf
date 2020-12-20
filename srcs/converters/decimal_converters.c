@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:12:56 by jules             #+#    #+#             */
-/*   Updated: 2020/12/20 00:38:38 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/20 10:23:09 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ void	handle_u(t_helper *helper, va_list *list)
 	}
 }
 
-void	write_hex(t_helper *helper, char *hexa, int val)
+void	write_hex(t_helper *helper, char *hexa, unsigned int val)
 {
 	if (val == 0)
 	{
-		if (helper->precision != -1)
+		if (helper->precision == 0)
 			return ;
 		fill_print(helper, '0');
 	}
