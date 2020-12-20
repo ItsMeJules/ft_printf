@@ -6,7 +6,7 @@
 /*   By: jules <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 20:41:23 by jules             #+#    #+#             */
-/*   Updated: 2020/12/19 20:10:55 by jules            ###   ########.fr       */
+/*   Updated: 2020/12/20 11:09:09 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@ void	write_string(t_helper *helper, char *s, int len, int alloc)
 		free(s);
 }
 
+void	len_pad_checks(t_helper *helper, int alloc, int *len)
+{
+	if (helper->precision >= 0 && helper->precision < *len)
+	{
+		if (!alloc)
+			*len = helper->precision;
+		else
+			*len = 0;
+	}
+	helper->pad_len -= *len;
+	helper->precision = -1; /* resets the precision for errors handling */
+}
+
 void	handle_s(t_helper *helper, va_list *list)
 {
 	char	*s;
@@ -54,9 +67,7 @@ void	handle_s(t_helper *helper, va_list *list)
 		alloc = 1;
 	}
 	len = ft_strlen(s);
-	if (helper->precision >= 0 && helper->precision < len)
-		len = helper->precision;
-	helper->pad_len -= len;
+	len_pad_checks(helper, alloc, &len);
 	if (!helper->r_pad)
 	{
 		write_string(helper, s, len, alloc);
